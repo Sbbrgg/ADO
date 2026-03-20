@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using System.Data.SqlClient;
 using ADO;
-
 namespace PV_521_ADO
 {
 	class Program
@@ -15,17 +14,25 @@ namespace PV_521_ADO
 		static void Main(string[] args)
 		{
 			string connection_string = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_PV_521;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
 			Connector connector = new Connector(connection_string);
 
-			string cmd =
-"SELECT movie_id,title,release_date,first_name,second_name FROM Movies,Directors WHERE director=director_id";
+			connector.Insert("INSERT Directors (first_name,second_name) VALUES (N'Guy', N'Richie');");
 
-			connector.Select(cmd);
-			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*) FROM Movies")}");
+			Console.WriteLine($"PK MAX:\t{connector.GetMaxPrimaryKey("Directors")}");
 
-			connector.Select("SELECT * FROM Directors");
+			//string cmd = "SELECT movie_id,title,release_date,first_name,second_name FROM Movies,Directors WHERE director=director_id";
+			//connector.Select(cmd);
+
+			connector.Select("*", "Directors");
 			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*) FROM Directors")}");
+
+			connector.Select
+				(
+				"title,release_date,first_name,second_name",
+				"Movies,Directors",
+				"director=director_id"
+				);
+			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*) FROM Movies")}");
 			//command.CommandText = "SELECT COUNT(*) FROM Movies";
 			//Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
 
