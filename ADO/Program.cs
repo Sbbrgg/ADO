@@ -27,13 +27,6 @@ namespace ADO
 					$"Называется\t" +
 					$"{ExecuteScalarQuery(connection_string, $"SELECT title FROM Movies WHERE director = {id_director}")}"
 				);
-			//Console.WriteLine
-			//	(
-			//	$"Фильм, который снял" +
-			//	$"{ExecuteScalarQuery(connection_string, "SELECT first_name, last_name FROM Directors WHERE director_id = id_director")}" +
-			//	$"\tназывается" +
-			//	$"{ExecuteScalarQuery(connection_string, "SELECT title FROM Movies WHERE director = id_director")}");
-
 		}
 		static void ExecuteReaderQuery(string ConnectionString, string query)
 		{ 
