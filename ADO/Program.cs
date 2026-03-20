@@ -11,7 +11,9 @@ namespace ADO
 	{
 		static void Main(string[] args)
 		{
-			string connection_string = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_PV_521;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+			string connection_string = 
+"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_PV_521;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
 			Console.WriteLine(connection_string);
 
 			ExecuteReaderQuery(connection_string, "SELECT movie_id, title, release_date, first_name,second_name FROM Movies, Directors WHERE director=director_id");
