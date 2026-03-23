@@ -70,6 +70,27 @@ namespace ADO
 		{
 			return GetMaxPrimaryKey(table) + 1;
 		}
+		public object GetPrimaryKeyName(string table) //sp_pkeys - встроенная процедура для вывода информации о первичном ключе. (sp_pkeys TABLE)
+		{
+			string cmd =
+				$"SELECT COLUMN_NAME " +
+				$"FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE " +
+				$"WHERE TABLE_NAME = '{table}' " +
+				$"AND CONSTRAINT_NAME = (SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS " +
+				$"WHERE CONSTRAINT_TYPE = 'PRIMARY KEY' AND TABLE_NAME = '{table}')";
+
+			//string cmd = $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME = '{table}' AND CONSTRAINT_NAME LIKE 'PK_%'";
+			string pkName = "";
+			connection.Open();
+
+			SqlCommand command = new SqlCommand (cmd, connection);
+			object result = command.ExecuteScalar();
+			if (result != null)
+				pkName = (string)result;
+			
+			connection.Close();
+			return pkName;
+		}
 		public void Insert(string cmd)
 		{
 			SqlCommand command = new SqlCommand (cmd, connection);

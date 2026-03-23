@@ -33,6 +33,8 @@ namespace PV_521_ADO
 				"director=director_id"
 				);
 			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*) FROM Movies")}");
+			Console.WriteLine("\n\n\n\n");
+			Console.WriteLine($"Имя первичного ключа: {connector.GetPrimaryKeyName("Directors")}");
 			//command.CommandText = "SELECT COUNT(*) FROM Movies";
 			//Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
 
