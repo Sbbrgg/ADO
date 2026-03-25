@@ -4,16 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-namespace ADO
-{
 	public class Connector
 	{
 		string connection_string;
 		SqlConnection connection;
 		public Connector(string connection_string)
 		{
-			//Console.WriteLine(connection_string);
-			this.connection_string = connection_string;
+		Console.WriteLine(connection_string);
+		this.connection_string = connection_string;
 			connection = new SqlConnection(connection_string);
 
 		}
@@ -119,4 +117,3 @@ AND CONSTRAINT_NAME LIKE N'PK_%'";
 
 		}
 	}
-}
