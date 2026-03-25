@@ -16,7 +16,17 @@ namespace PV_521_ADO
 			string connection_string = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_PV_521;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 			Connector connector = new Connector(connection_string);
 
-			connector.Insert("INSERT Directors (first_name,second_name) VALUES (N'Guy', N'Richie');");
+			Console.WriteLine(connector.GetPrimaryKeyColumnName("Directors"));
+			Console.WriteLine(connector.GetPrimaryKeyColumnName("Movies"));
+
+			//connector.Insert($"INSERT Directors (director_id,first_name,second_name) VALUES ({connector.GetNextPrimaryKey("Directors")}N'Guy', N'Richie');");
+
+			connector.Insert
+			(
+				"Directors", 
+				"director_id, first_name, second_name", 
+				$"{connector.GetNextPrimaryKey("Directors")},John,Singleton"
+			);
 
 			Console.WriteLine($"PK MAX:\t{connector.GetMaxPrimaryKey("Directors")}");
 
