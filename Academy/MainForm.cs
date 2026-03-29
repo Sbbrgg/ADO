@@ -31,6 +31,14 @@ namespace Academy
 			new Query("*", "Disciplines"),
 			new Query("*", "Teachers")
 		};
+		string[] status_message =
+		{
+			"Количество студентов",
+			"Количество групп",
+			"Количество направлений",
+			"Количество дисциплин",
+			"Количество преподавателей"
+		};
 		DataGridView[] tables;
 		DBTools.Connector connector;
 		public MainForm()
@@ -42,11 +50,14 @@ namespace Academy
 			//dgvDirections.DataSource = connector.Select("*", "Directions");
 			//toolStripStatusLabel.Text = $"Количество направлений обучения: {dgvDirections.Rows.Count-1}";
 			//toolStripStatusLabel.Text = $"Количество направлений обучения: {connector.Scalar("SELECT COUNT(*) FROM Directions")}";
+			tabControl_SelectedIndexChanged(tabControl, null);
 		}
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
+			int i = tabControl.SelectedIndex;
+			tables[i].DataSource = connector.Select(queries[i].ToString());
+			toolStripStatusLabel.Text = $"{status_message[i]}: {tables[i].RowCount - 1}";
 		}
 	}
 }
