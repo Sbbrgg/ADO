@@ -28,26 +28,41 @@ namespace DBTools
 			SqlDataReader reader = command.ExecuteReader();
 			for (int i = 0; i < reader.FieldCount; i++)
 			{
-				Console.Write(reader.GetName(i) + "\t");
-				table.Columns.Add(reader.GetName(i));
+				DataColumn column = new DataColumn(reader.GetName(i), reader.GetFieldType(i));
+				table.Columns.Add
+					(
+						column
+					);
+				//Console.WriteLine($"{column} + {column.DataType}");
 			}
-			Console.WriteLine();
 			while (reader.Read())
 			{
 				DataRow row = table.NewRow();
-				//Console.WriteLine($"{reader[0]}\t{reader[1]}\t{reader[2]}\t{reader[3]}");
 				for (int i = 0; i < reader.FieldCount; i++)
-				{
-					row[i] = reader[i];
-					Console.Write($"{reader[i]}\t\t");
-				}
-				Console.WriteLine();
+					row[i] = reader.IsDBNull(i) ? DBNull.Value : reader.GetValue(i);
 				table.Rows.Add(row);
 			}
 			connection.Close();
 			reader.Close();
 			return table;
 		}
+
+
+		//public DataTable Select(string cmd)
+		//{
+		//	DataTable table = new DataTable();
+		//	connection.Open();
+		//	SqlCommand command = new SqlCommand(cmd, connection);
+
+		//	SqlDataReader reader = command.ExecuteReader();
+
+		//	//функция Load позволяет без лишних заморочек просто втупую скопировать схему уже имеющейся таблицы.Она копирует типы данных.
+		//	table.Load(reader);
+
+		//	connection.Close();
+		//	reader.Close();
+		//	return table;
+		//}
 		public DataTable Select(string fields, string tables, string condition = "")
 		{
 			string cmd = $"SELECT {fields} FROM {tables}";
