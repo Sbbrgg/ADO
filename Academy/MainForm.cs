@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -43,6 +44,7 @@ namespace Academy
 		DBTools.Connector connector;
 		public MainForm()
 		{
+			AllocConsole();
 			InitializeComponent();
 			tables = new DataGridView[] { dgvStudents, dgvGroups, dgvDirections, dgvDisciplines, dgvTeachers };
 			connector = new DBTools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
@@ -55,7 +57,13 @@ namespace Academy
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
+			int i = tabControl.SelectedIndex;
+			tables[i].DataSource = connector.Select(queries[i].ToString());
+			toolStripStatusLabel.Text = $"{status_message[i]}: {tables[i].RowCount - 1}";
 		}
+		[DllImport("kernel32.dll")]
+		public static extern void AllocConsole();
+		[DllImport("kernel32.dll")]
+		public static extern bool FreeConsole();
 	}
 }
