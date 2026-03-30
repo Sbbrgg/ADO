@@ -28,10 +28,11 @@ namespace DBTools
 			SqlDataReader reader = command.ExecuteReader();
 			for (int i = 0; i < reader.FieldCount; i++)
 			{
-				DataColumn column = new DataColumn(reader.GetName(i), reader.GetFieldType(i));
+				//DataColumn column = new DataColumn(reader.GetName(i), reader.GetFieldType(i));
 				table.Columns.Add
 					(
-						column
+						//column
+						new DataColumn(reader.GetName(i), reader.GetFieldType(i))
 					);
 				//Console.WriteLine($"{column} + {column.DataType}");
 			}

@@ -64,14 +64,14 @@ namespace Academy
 
 		private void dgvDisciplines_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
-			if(e.RowIndex >= 0 && e.ColumnIndex >=0)
+			if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
 			{
-			Console.WriteLine();
-			string SelectedDisciplines = tables[3].Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-			int SelectedDiscipline_id = Convert.ToInt32(tables[3].Rows[e.RowIndex].Cells["discipline_id"].Value);
+				Console.WriteLine();
+				string SelectedDisciplines = tables[3].Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+				int SelectedDiscipline_id = Convert.ToInt32(tables[3].Rows[e.RowIndex].Cells["discipline_id"].Value);
 
-			int count = Convert.ToInt32(connector.Scalar
-				($@"
+				int count = Convert.ToInt32(connector.Scalar
+					($@"
 SELECT COUNT(*) 
 FROM Teachers 
 WHERE EXISTS 
@@ -82,13 +82,11 @@ WHERE teacher = Teachers.teacher_id
 AND discipline = {SelectedDiscipline_id}
 )"
 
-				));
-			Console.WriteLine(count);
-			MessageBox.Show($"Дисциплина: {SelectedDisciplines}\nКоличество преподавателей: {count}", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					));
+				Console.WriteLine(count);
+				MessageBox.Show($"Дисциплина: {SelectedDisciplines}\nКоличество преподавателей: {count}", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
-
-
 		[DllImport("kernel32.dll")]
 		public static extern void AllocConsole();
 		[DllImport("kernel32.dll")]
