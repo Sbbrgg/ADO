@@ -28,7 +28,7 @@ namespace DBTools
 			SqlDataReader reader = command.ExecuteReader();
 			for (int i = 0; i < reader.FieldCount; i++)
 			{
-				Console.Write(reader.GetName(i) + "\t");
+				//Console.Write(reader.GetName(i) + "\t");
 				table.Columns.Add(reader.GetName(i));
 			}
 			Console.WriteLine();
@@ -39,7 +39,7 @@ namespace DBTools
 				for (int i = 0; i < reader.FieldCount; i++)
 				{
 					row[i] = reader[i];
-					Console.Write($"{reader[i]}\t\t");
+					//Console.Write($"{reader[i]}\t\t");
 				}
 				Console.WriteLine();
 				table.Rows.Add(row);
@@ -55,6 +55,22 @@ namespace DBTools
 			cmd += ";";
 			return Select(cmd);
 		}
+		public Dictionary<string, int> GetDictionary(string table)
+		{
+			Dictionary<string, int> dictionary = new Dictionary<string, int>();
+			string cmd = $"SELECT {table.Substring(0, table.Length - 1)}_name,{table.Substring(0, table.Length-1)}_id FROM {table}";
+			SqlCommand command = new SqlCommand(cmd, connection);
+			connection.Open();
+			SqlDataReader reader = command.ExecuteReader();
+			while(reader.Read())
+			{
+				dictionary.Add(reader[0].ToString(), Convert.ToInt32(reader[1]));
+			}
+			reader.Close();
+			connection.Close();
+			return dictionary;
+		}
+
 		public object Scalar(string cmd)
 		{
 			object result = null;
