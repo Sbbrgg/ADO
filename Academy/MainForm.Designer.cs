@@ -32,8 +32,11 @@
 			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPageStudents = new System.Windows.Forms.TabPage();
+			this.cbStudentsDirection = new System.Windows.Forms.ComboBox();
+			this.cbStudentsGroups = new System.Windows.Forms.ComboBox();
 			this.dgvStudents = new System.Windows.Forms.DataGridView();
 			this.tabPageGroups = new System.Windows.Forms.TabPage();
+			this.cbGroupDirection = new System.Windows.Forms.ComboBox();
 			this.dgvGroups = new System.Windows.Forms.DataGridView();
 			this.tabPageDirections = new System.Windows.Forms.TabPage();
 			this.dgvDirections = new System.Windows.Forms.DataGridView();
@@ -41,9 +44,7 @@
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
-			this.cbGroupDirection = new System.Windows.Forms.ComboBox();
-			this.cbStudentsGroups = new System.Windows.Forms.ComboBox();
-			this.cbStudentsDirection = new System.Windows.Forms.ComboBox();
+			this.buttonAddStudent = new System.Windows.Forms.Button();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -92,6 +93,7 @@
 			// 
 			// tabPageStudents
 			// 
+			this.tabPageStudents.Controls.Add(this.buttonAddStudent);
 			this.tabPageStudents.Controls.Add(this.cbStudentsDirection);
 			this.tabPageStudents.Controls.Add(this.cbStudentsGroups);
 			this.tabPageStudents.Controls.Add(this.dgvStudents);
@@ -102,6 +104,25 @@
 			this.tabPageStudents.TabIndex = 0;
 			this.tabPageStudents.Text = "Students";
 			this.tabPageStudents.UseVisualStyleBackColor = true;
+			// 
+			// cbStudentsDirection
+			// 
+			this.cbStudentsDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbStudentsDirection.FormattingEnabled = true;
+			this.cbStudentsDirection.Location = new System.Drawing.Point(154, 6);
+			this.cbStudentsDirection.Name = "cbStudentsDirection";
+			this.cbStudentsDirection.Size = new System.Drawing.Size(344, 21);
+			this.cbStudentsDirection.TabIndex = 3;
+			this.cbStudentsDirection.SelectedIndexChanged += new System.EventHandler(this.cbStudentsDirection_SelectedIndexChanged);
+			// 
+			// cbStudentsGroups
+			// 
+			this.cbStudentsGroups.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbStudentsGroups.FormattingEnabled = true;
+			this.cbStudentsGroups.Location = new System.Drawing.Point(29, 6);
+			this.cbStudentsGroups.Name = "cbStudentsGroups";
+			this.cbStudentsGroups.Size = new System.Drawing.Size(119, 21);
+			this.cbStudentsGroups.TabIndex = 2;
 			// 
 			// dgvStudents
 			// 
@@ -126,6 +147,16 @@
 			this.tabPageGroups.TabIndex = 1;
 			this.tabPageGroups.Text = "Groups";
 			this.tabPageGroups.UseVisualStyleBackColor = true;
+			// 
+			// cbGroupDirection
+			// 
+			this.cbGroupDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbGroupDirection.FormattingEnabled = true;
+			this.cbGroupDirection.Location = new System.Drawing.Point(179, 3);
+			this.cbGroupDirection.Name = "cbGroupDirection";
+			this.cbGroupDirection.Size = new System.Drawing.Size(396, 21);
+			this.cbGroupDirection.TabIndex = 2;
+			this.cbGroupDirection.SelectedIndexChanged += new System.EventHandler(this.cbGroupDirection_SelectedIndexChanged);
 			// 
 			// dgvGroups
 			// 
@@ -208,34 +239,15 @@
 			this.dgvTeachers.Size = new System.Drawing.Size(776, 366);
 			this.dgvTeachers.TabIndex = 1;
 			// 
-			// cbGroupDirection
+			// buttonAddStudent
 			// 
-			this.cbGroupDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbGroupDirection.FormattingEnabled = true;
-			this.cbGroupDirection.Location = new System.Drawing.Point(179, 3);
-			this.cbGroupDirection.Name = "cbGroupDirection";
-			this.cbGroupDirection.Size = new System.Drawing.Size(396, 21);
-			this.cbGroupDirection.TabIndex = 2;
-			this.cbGroupDirection.SelectedIndexChanged += new System.EventHandler(this.cbGroupDirection_SelectedIndexChanged);
-			// 
-			// cbStudentsGroups
-			// 
-			this.cbStudentsGroups.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbStudentsGroups.FormattingEnabled = true;
-			this.cbStudentsGroups.Location = new System.Drawing.Point(29, 6);
-			this.cbStudentsGroups.Name = "cbStudentsGroups";
-			this.cbStudentsGroups.Size = new System.Drawing.Size(119, 21);
-			this.cbStudentsGroups.TabIndex = 2;
-			// 
-			// cbStudentsDirection
-			// 
-			this.cbStudentsDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbStudentsDirection.FormattingEnabled = true;
-			this.cbStudentsDirection.Location = new System.Drawing.Point(279, 6);
-			this.cbStudentsDirection.Name = "cbStudentsDirection";
-			this.cbStudentsDirection.Size = new System.Drawing.Size(344, 21);
-			this.cbStudentsDirection.TabIndex = 3;
-			this.cbStudentsDirection.SelectedIndexChanged += new System.EventHandler(this.cbStudentsDirection_SelectedIndexChanged);
+			this.buttonAddStudent.Location = new System.Drawing.Point(654, 4);
+			this.buttonAddStudent.Name = "buttonAddStudent";
+			this.buttonAddStudent.Size = new System.Drawing.Size(130, 23);
+			this.buttonAddStudent.TabIndex = 4;
+			this.buttonAddStudent.Text = "Добавить";
+			this.buttonAddStudent.UseVisualStyleBackColor = true;
+			this.buttonAddStudent.Click += new System.EventHandler(this.buttonAddStudent_Click);
 			// 
 			// MainForm
 			// 
@@ -282,6 +294,7 @@
 		private System.Windows.Forms.ComboBox cbGroupDirection;
 		private System.Windows.Forms.ComboBox cbStudentsDirection;
 		private System.Windows.Forms.ComboBox cbStudentsGroups;
+		private System.Windows.Forms.Button buttonAddStudent;
 	}
 }
 

@@ -44,6 +44,7 @@ namespace Academy
 		DBTools.Connector connector;
 		Dictionary<string, int> d_directions;
 		Dictionary<string, int> d_groups;
+		StudentForm studentForm;
 		public MainForm()
 		{
 			AllocConsole();
@@ -99,6 +100,12 @@ namespace Academy
 					$" AND direction={d_directions[cbStudentsDirection.SelectedItem.ToString()]}"
 				);
 			toolStripStatusLabel.Text = $"{status_message[0]}: {dgvStudents.RowCount - 1}";
+		}
+
+		private void buttonAddStudent_Click(object sender, EventArgs e)
+		{
+			studentForm = new StudentForm();
+			studentForm.ShowDialog();	
 		}
 	}
 }
