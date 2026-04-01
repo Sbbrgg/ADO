@@ -42,8 +42,10 @@ namespace Academy
 		};
 		DataGridView[] tables;
 		DBTools.Connector connector;
-		Dictionary<string, int> d_directions;
+		public static Dictionary<string, int> d_directions;
 		Dictionary<string, int> d_groups;
+		Dictionary<string, int> d_disciplines;
+		Dictionary<string, int> d_teachers;
 		public MainForm()
 		{
 			AllocConsole();
@@ -58,10 +60,15 @@ namespace Academy
 
 			d_directions = connector.GetDictionary("Directions");
 			d_groups = connector.GetDictionary("Groups");
+			d_disciplines = connector.GetDictionary("Disciplines");
+			d_teachers = connector.GetDictionary("Teachers");
 
 			cbStudentsGroups.Items.AddRange(d_groups.Keys.ToArray());
 			cbGroupDirection.Items.AddRange(d_directions.Keys.ToArray());
 			cbStudentsDirection.Items.AddRange(d_directions.Keys.ToArray());
+			cbDirections.Items.AddRange(d_directions.Keys.ToArray());
+			cbDisciplines.Items.AddRange(d_disciplines.Keys.ToArray());
+			cbTerachers.Items.AddRange(d_teachers.Keys.ToArray());
 		}
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,10 +102,63 @@ namespace Academy
 			cbStudentsGroups.Items.AddRange(d_groups.Keys.ToArray());
 			dgvStudents.DataSource = connector.Select
 				(
-					queries[0].ToString()+
+					queries[0].ToString() +
 					$" AND direction={d_directions[cbStudentsDirection.SelectedItem.ToString()]}"
 				);
 			toolStripStatusLabel.Text = $"{status_message[0]}: {dgvStudents.RowCount - 1}";
+		}
+
+		private void cbDirections_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			dgvDirections.DataSource = connector.Select
+				(
+					queries[2].ToString() +
+					$" WHERE direction_id={d_directions[cbDirections.SelectedItem.ToString()]}"
+				);
+
+			toolStripStatusLabel.Text = $"{status_message[2]}: {dgvDirections.RowCount - 1}";
+		}
+
+		private void cbDisciplines_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			dgvDisciplines.DataSource = connector.Select
+				(
+					queries[3].ToString() +
+					$" WHERE discipline_id={d_disciplines[cbDisciplines.SelectedItem.ToString()]}"
+				);
+			toolStripStatusLabel.Text = $"{status_message[3]}: {dgvDisciplines.RowCount - 1}";
+		}
+
+		private void cbTerachers_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			dgvTeachers.DataSource = connector.Select
+				(
+					queries[4].ToString() +
+					$" WHERE teacher_id={d_teachers[cbTerachers.SelectedItem.ToString()]}"
+				);
+			toolStripStatusLabel.Text = $"{status_message[4]}: {dgvTeachers.RowCount - 1}";
+		}
+
+		private void buttonAddStudents_Click(object sender, EventArgs e)
+		{
+			AddForm addForm = new AddForm(sender);
+			addForm.ShowDialog();
+		}
+
+		private void buttonAddTeacher_Click(object sender, EventArgs e)
+		{
+			AddForm addForm = new AddForm(sender);
+			addForm.ShowDialog();
+		}
+
+		private void buttonAddGroups_Click(object sender, EventArgs e)
+		{
+			AddForm addForm = new AddForm(sender);
+			addForm.ShowDialog();
+		}
+		public static void AddToDB(string tables, string fields, string values)
+		{
+
 		}
 	}
 }

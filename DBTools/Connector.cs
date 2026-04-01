@@ -58,12 +58,18 @@ namespace DBTools
 		public Dictionary<string, int> GetDictionary(string table, string condition = "")
 		{
 			Dictionary<string, int> dictionary = new Dictionary<string, int>();
-			string cmd = $"SELECT {table.Substring(0, table.Length - 1)}_name,{table.Substring(0, table.Length-1)}_id FROM {table}";
+			string cmd;
+			if (table == "Teachers")
+			{
+				cmd = $"SELECT (last_name + ' ' + first_name + ' ' + middle_name) AS full_name,teacher_id FROM {table}";
+			}
+			else
+				cmd = $"SELECT {table.Substring(0, table.Length - 1)}_name,{table.Substring(0, table.Length - 1)}_id FROM {table}";
 			if (condition != "") cmd += $" WHERE {condition}";
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();
 			SqlDataReader reader = command.ExecuteReader();
-			while(reader.Read())
+			while (reader.Read())
 			{
 				dictionary.Add(reader[0].ToString(), Convert.ToInt32(reader[1]));
 			}
