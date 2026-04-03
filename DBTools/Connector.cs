@@ -58,12 +58,12 @@ namespace DBTools
 		public Dictionary<string, int> GetDictionary(string table, string condition = "")
 		{
 			Dictionary<string, int> dictionary = new Dictionary<string, int>();
-			string cmd = $"SELECT {table.Substring(0, table.Length - 1)}_name,{table.Substring(0, table.Length-1)}_id FROM {table}";
+			string cmd = $"SELECT {table.Substring(0, table.Length - 1)}_name,{table.Substring(0, table.Length - 1)}_id FROM {table}";
 			if (condition != "") cmd += $" WHERE {condition}";
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();
 			SqlDataReader reader = command.ExecuteReader();
-			while(reader.Read())
+			while (reader.Read())
 			{
 				dictionary.Add(reader[0].ToString(), Convert.ToInt32(reader[1]));
 			}
@@ -135,7 +135,8 @@ AND CONSTRAINT_NAME LIKE N'PK_%'";
 			for (int i = 1; i < s_fields.Length; i++)
 			{
 				condition += $" {s_fields[i]}=N'{s_values[i]}' ";
-				parsed_values += s_values[i][0] != 'N' && s_values[i][1] != '\'' ? $"N'{s_values[i]}'" : s_values[i];
+				if (s_values[i].Length > 1)
+					parsed_values += s_values[i][0] != 'N' && s_values[i][1] != '\'' ? $"N'{s_values[i]}'" : s_values[i];
 				if (i != s_fields.Length - 1)
 				{
 					condition += "AND";

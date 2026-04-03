@@ -210,6 +210,7 @@
 			this.buttonOk.TabIndex = 15;
 			this.buttonOk.Text = "OK";
 			this.buttonOk.UseVisualStyleBackColor = true;
+			this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
 			// 
 			// HumanForm
 			// 
@@ -233,6 +234,8 @@
 			this.Controls.Add(this.labelFirstName);
 			this.Controls.Add(this.labelLastName);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "HumanForm";
 			this.ShowInTaskbar = false;
 			this.Text = "HumanForm";
@@ -248,17 +251,17 @@
 		private System.Windows.Forms.Label labelFirstName;
 		private System.Windows.Forms.Label labelMiddleName;
 		private System.Windows.Forms.Label labelBirthDate;
-		private System.Windows.Forms.TextBox TBLastName;
-		private System.Windows.Forms.TextBox TBFirstName;
-		private System.Windows.Forms.TextBox TBMiddleName;
-		private System.Windows.Forms.DateTimePicker dtpBirthDate;
-		private System.Windows.Forms.PictureBox pbPhoto;
 		private System.Windows.Forms.Button buttonBrowse;
-		private System.Windows.Forms.TextBox tbEmail;
-		private System.Windows.Forms.TextBox tbPhone;
 		private System.Windows.Forms.Label labelEmail;
 		private System.Windows.Forms.Label labelPhone;
 		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.Button buttonOk;
+		protected System.Windows.Forms.TextBox TBLastName;
+		protected System.Windows.Forms.TextBox TBFirstName;
+		protected System.Windows.Forms.TextBox TBMiddleName;
+		protected System.Windows.Forms.DateTimePicker dtpBirthDate;
+		protected System.Windows.Forms.PictureBox pbPhoto;
+		protected System.Windows.Forms.TextBox tbEmail;
+		protected System.Windows.Forms.TextBox tbPhone;
 	}
 }
