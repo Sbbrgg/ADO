@@ -15,10 +15,6 @@ namespace Academy
 		public StudentForm()
 		{
 			InitializeComponent();
-		}
-
-		private void labelGroup_Click(object sender, EventArgs e)
-		{
 
 		}
 	}
