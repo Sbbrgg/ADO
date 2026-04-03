@@ -16,5 +16,11 @@ namespace Academy
 		{
 			InitializeComponent();
 		}
+
+		private void buttonOk_Click(object sender, EventArgs e)
+		{
+			Console.WriteLine("Кнопка OK нажата");
+			
+		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBTools;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,13 @@ namespace Academy
 {
 	public partial class StudentForm : HumanForm
 	{
+		Dictionary<string, int> d_groups;
 		public StudentForm()
 		{
 			InitializeComponent();
 
+			d_groups = MainForm.connector.GetDictionary("Groups");
+			cbGroups.Items.AddRange(d_groups.Keys.ToArray());
 		}
 	}
 }

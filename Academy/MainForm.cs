@@ -41,7 +41,7 @@ namespace Academy
 			"Количество преподавателей"
 		};
 		DataGridView[] tables;
-		DBTools.Connector connector;
+		public static DBTools.Connector connector;
 		Dictionary<string, int> d_directions;
 		Dictionary<string, int> d_groups;
 		StudentForm studentForm;
