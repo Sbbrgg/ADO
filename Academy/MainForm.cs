@@ -18,19 +18,19 @@ namespace Academy
 		{
 			new Query
 				(
-				"last_name,first_name,middle_name,group_name,direction_name",
+				"stud_id,last_name,first_name,middle_name,group_name,direction_name",
 				"Students,Groups,Directions",
 				"[group]=group_id AND direction=direction_id"
-				),
+				),//0
 			new Query
 				(
 				"*",
 				"Groups,Directions",
 				"direction=direction_id"
-				),
-			new Query("*", "Directions"),
-			new Query("*", "Disciplines"),
-			new Query("*", "Teachers")
+				),//1
+			new Query("*", "Directions"),//2
+			new Query("*", "Disciplines"),//3
+			new Query("*", "Teachers")//4
 		};
 		string[] status_message =
 		{
@@ -70,6 +70,7 @@ namespace Academy
 			int i = tabControl.SelectedIndex;
 			tables[i].DataSource = connector.Select(queries[i].ToString());
 			toolStripStatusLabel.Text = $"{status_message[i]}: {tables[i].RowCount - 1}";
+			if(i == 0) dgvStudents.Columns["stud_id"].Visible = false;
 		}
 		[DllImport("kernel32.dll")]
 		public static extern void AllocConsole();
@@ -105,7 +106,21 @@ namespace Academy
 		private void buttonAddStudent_Click(object sender, EventArgs e)
 		{
 			studentForm = new StudentForm();
-			studentForm.ShowDialog();	
+			studentForm.ShowDialog();
+
+			dgvStudents.DataSource = connector.Select(queries[0].ToString());
+			toolStripStatusLabel.Text = $"{status_message[0]}: {dgvStudents.Rows.Count - 1}";
+		}
+
+		private void dgvStudents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (e.RowIndex < 0) return;
+
+			int choosenStudentId = Convert.ToInt32(dgvStudents.Rows[e.RowIndex].Cells["stud_id"].Value);
+
+			StudentForm studentForm = new StudentForm(choosenStudentId);
+			studentForm.ShowDialog();
+			dgvStudents.DataSource = connector.Select(queries[0].ToString());
 		}
 	}
 }

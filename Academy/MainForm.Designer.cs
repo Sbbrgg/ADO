@@ -32,6 +32,7 @@
 			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPageStudents = new System.Windows.Forms.TabPage();
+			this.buttonAddStudent = new System.Windows.Forms.Button();
 			this.cbStudentsDirection = new System.Windows.Forms.ComboBox();
 			this.cbStudentsGroups = new System.Windows.Forms.ComboBox();
 			this.dgvStudents = new System.Windows.Forms.DataGridView();
@@ -44,7 +45,6 @@
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
-			this.buttonAddStudent = new System.Windows.Forms.Button();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -105,6 +105,16 @@
 			this.tabPageStudents.Text = "Students";
 			this.tabPageStudents.UseVisualStyleBackColor = true;
 			// 
+			// buttonAddStudent
+			// 
+			this.buttonAddStudent.Location = new System.Drawing.Point(654, 4);
+			this.buttonAddStudent.Name = "buttonAddStudent";
+			this.buttonAddStudent.Size = new System.Drawing.Size(130, 23);
+			this.buttonAddStudent.TabIndex = 4;
+			this.buttonAddStudent.Text = "Добавить";
+			this.buttonAddStudent.UseVisualStyleBackColor = true;
+			this.buttonAddStudent.Click += new System.EventHandler(this.buttonAddStudent_Click);
+			// 
 			// cbStudentsDirection
 			// 
 			this.cbStudentsDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -135,6 +145,7 @@
 			this.dgvStudents.Name = "dgvStudents";
 			this.dgvStudents.Size = new System.Drawing.Size(776, 366);
 			this.dgvStudents.TabIndex = 1;
+			this.dgvStudents.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellDoubleClick);
 			// 
 			// tabPageGroups
 			// 
@@ -238,16 +249,6 @@
 			this.dgvTeachers.Name = "dgvTeachers";
 			this.dgvTeachers.Size = new System.Drawing.Size(776, 366);
 			this.dgvTeachers.TabIndex = 1;
-			// 
-			// buttonAddStudent
-			// 
-			this.buttonAddStudent.Location = new System.Drawing.Point(654, 4);
-			this.buttonAddStudent.Name = "buttonAddStudent";
-			this.buttonAddStudent.Size = new System.Drawing.Size(130, 23);
-			this.buttonAddStudent.TabIndex = 4;
-			this.buttonAddStudent.Text = "Добавить";
-			this.buttonAddStudent.UseVisualStyleBackColor = true;
-			this.buttonAddStudent.Click += new System.EventHandler(this.buttonAddStudent_Click);
 			// 
 			// MainForm
 			// 
