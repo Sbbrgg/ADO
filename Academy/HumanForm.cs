@@ -11,9 +11,10 @@ using System.Configuration;
 
 namespace Academy
 {
-	public partial class HumanForm : Form
+	internal partial class HumanForm : Form
 	{
 		//protected DBTools.Connector connector;
+		protected Models.Human human;
 		protected HumanForm()
 		{
 			InitializeComponent();
@@ -22,6 +23,17 @@ namespace Academy
 		}
 
 		protected virtual void buttonOk_Click(object sender, EventArgs e)
-		{ }
+		{
+			human = new Models.Human
+				(
+					TBLastName.Text,
+					TBFirstName.Text,
+					TBMiddleName.Text,
+					dtpBirthDate.Value.ToString("yyyy-MM-dd"),
+					tbEmail.Text,
+					tbPhone.Text,
+					pbPhoto.Image
+				);
+		}
 	}
 }

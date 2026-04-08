@@ -10,8 +10,9 @@ using System.Windows.Forms;
 
 namespace Academy
 {
-	public partial class StudentForm : HumanForm
+	internal partial class StudentForm : HumanForm
 	{
+		internal Models.Student student;
 		public StudentForm()
 		{
 			InitializeComponent();
@@ -22,26 +23,18 @@ namespace Academy
 			cbGroups.ValueMember = "group_id";
 		}
 		protected override void buttonOk_Click(object sender, EventArgs e)
-		{
-			Models.Student student = new Models.Student
-				(
-					TBLastName  .Text,
-					TBFirstName .Text,
-					TBMiddleName.Text,
-					dtpBirthDate.Value.ToString("yyyy-MM-dd"),
-					tbEmail.Text,
-					tbPhone.Text,
-					pbPhoto.Image,
-					Convert.ToInt32(cbGroups.SelectedValue)
-				);
-			DataBase.Connector.Insert("students", $"{student.GetNames()}", $"{student.GetValues()}");
+		{ 
+			base.buttonOk_Click(sender, e);
+
+			student = new Models.Student(human, Convert.ToInt32(cbGroups.SelectedValue));
+			DataBase.Connector.Insert("Students", $"{student.GetNames()}", $"{student.GetValues()}");
 			//DataBase.Connector.Insert
 			//	(
 			//		"Students",
 			//		"last_name,first_name,middle_name,birth_date,email,phone,[group]",
 			//		$"{TBLastName.Text},{TBFirstName.Text},{TBMiddleName.Text},{dtpBirthDate.Value.ToString("yyyy-MM-dd")},{tbEmail.Text},{tbPhone.Text},{cbGroups.SelectedValue}"
 			//	);
-			
+
 		}
 	}
 }
