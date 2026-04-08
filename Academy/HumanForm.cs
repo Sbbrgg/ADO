@@ -11,16 +11,17 @@ using System.Configuration;
 
 namespace Academy
 {
-	public abstract partial class HumanForm : Form
+	public partial class HumanForm : Form
 	{
 		//protected DBTools.Connector connector;
-		public HumanForm()
+		protected HumanForm()
 		{
 			InitializeComponent();
 
 			//connector = new DBTools.Connector(ConfigurationManager.ConnectionStrings["Pv_521_Import"].ConnectionString);
 		}
 
-		protected abstract void buttonOk_Click(object sender, EventArgs e);
+		protected virtual void buttonOk_Click(object sender, EventArgs e)
+		{ }
 	}
 }
