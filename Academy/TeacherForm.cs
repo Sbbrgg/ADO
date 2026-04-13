@@ -31,7 +31,7 @@ namespace Academy
 		{
 			base.buttonOK_Click(sender, e);
 
-			teacher = new Models.Teacher(human, Convert.ToInt32(tbRate.Text));
+			teacher = new Models.Teacher(human, 32);
 			if (teacher.id == 0) DataBase.Connector.Insert("Teachers", $"{teacher.GetNames()}", $"{teacher.GetValues()}");
 			else DataBase.Connector.Update($"UPDATE Teachers SET {teacher.GetUpdateString()} WHERE teacher_id={teacher.id}");
 			if (teacher.photo != null)
