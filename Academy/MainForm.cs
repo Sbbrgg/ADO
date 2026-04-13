@@ -46,6 +46,7 @@ namespace Academy
 		Dictionary<string, int> d_groups;
 
 		StudentForm studentForm;
+		TeacherForm teacherForm;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -111,6 +112,23 @@ namespace Academy
 			StudentForm form = new StudentForm
 				(
 				Convert.ToInt32(dgvStudents.Rows[e.RowIndex].Cells["stud_id"].Value)
+				);
+			if (form.ShowDialog() == DialogResult.OK)
+				tabControl_SelectedIndexChanged(tabControl, null);
+		}
+
+		private void buttonAddTeacher_Click(object sender, EventArgs e)
+		{
+			teacherForm = new TeacherForm();
+			if (teacherForm.ShowDialog() == DialogResult.OK)
+				tabControl_SelectedIndexChanged(teacherForm, null);
+		}
+
+		private void dgvTeachers_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			TeacherForm form = new TeacherForm
+				(
+					Convert.ToInt32(dgvTeachers.Rows[e.RowIndex].Cells["teacher_id"].Value)
 				);
 			if (form.ShowDialog() == DialogResult.OK)
 				tabControl_SelectedIndexChanged(tabControl, null);

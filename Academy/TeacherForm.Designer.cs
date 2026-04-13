@@ -1,6 +1,6 @@
 ﻿namespace Academy
 {
-	partial class StudentForm
+	partial class TeacherForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,39 +28,43 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.cbGroup = new System.Windows.Forms.ComboBox();
-			this.labelGroup = new System.Windows.Forms.Label();
+			this.tbRate = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// cbGroup
+			// buttonOK
 			// 
-			this.cbGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.cbGroup.FormattingEnabled = true;
-			this.cbGroup.Location = new System.Drawing.Point(191, 239);
-			this.cbGroup.Name = "cbGroup";
-			this.cbGroup.Size = new System.Drawing.Size(272, 33);
-			this.cbGroup.TabIndex = 14;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click_1);
 			// 
-			// labelGroup
+			// tbRate
 			// 
-			this.labelGroup.AutoSize = true;
-			this.labelGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelGroup.Location = new System.Drawing.Point(96, 243);
-			this.labelGroup.Name = "labelGroup";
-			this.labelGroup.Size = new System.Drawing.Size(89, 25);
-			this.labelGroup.TabIndex = 15;
-			this.labelGroup.Text = "Группа:";
+			this.tbRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.tbRate.Location = new System.Drawing.Point(191, 240);
+			this.tbRate.Name = "tbRate";
+			this.tbRate.Size = new System.Drawing.Size(272, 31);
+			this.tbRate.TabIndex = 17;
 			// 
-			// StudentForm
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label1.Location = new System.Drawing.Point(122, 243);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(63, 25);
+			this.label1.TabIndex = 18;
+			this.label1.Text = "Rate:";
+			// 
+			// TeacherForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(657, 347);
-			this.Controls.Add(this.labelGroup);
-			this.Controls.Add(this.cbGroup);
-			this.Name = "StudentForm";
-			this.Text = "StudentForm";
+			this.ClientSize = new System.Drawing.Size(656, 345);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.tbRate);
+			this.Name = "TeacherForm";
+			this.Text = "TeacherForm";
+			this.Controls.SetChildIndex(this.buttonOK, 0);
 			this.Controls.SetChildIndex(this.tbLastName, 0);
 			this.Controls.SetChildIndex(this.tbFirstName, 0);
 			this.Controls.SetChildIndex(this.tbMiddleName, 0);
@@ -68,8 +72,8 @@
 			this.Controls.SetChildIndex(this.pbPhoto, 0);
 			this.Controls.SetChildIndex(this.tbEmail, 0);
 			this.Controls.SetChildIndex(this.tbPhone, 0);
-			this.Controls.SetChildIndex(this.cbGroup, 0);
-			this.Controls.SetChildIndex(this.labelGroup, 0);
+			this.Controls.SetChildIndex(this.tbRate, 0);
+			this.Controls.SetChildIndex(this.label1, 0);
 			((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -78,7 +82,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.ComboBox cbGroup;
-		private System.Windows.Forms.Label labelGroup;
+		private System.Windows.Forms.TextBox tbRate;
+		private System.Windows.Forms.Label label1;
 	}
 }

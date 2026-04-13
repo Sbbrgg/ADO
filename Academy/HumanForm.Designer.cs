@@ -271,7 +271,6 @@
 		private System.Windows.Forms.Button buttonBrowse;
 		private System.Windows.Forms.Label labelEmail;
 		private System.Windows.Forms.Label labelPhone;
-		private System.Windows.Forms.Button buttonOK;
 		private System.Windows.Forms.Button buttonCancel;
 		protected System.Windows.Forms.TextBox tbLastName;
 		protected System.Windows.Forms.TextBox tbFirstName;
@@ -281,5 +280,6 @@
 		protected System.Windows.Forms.TextBox tbEmail;
 		protected System.Windows.Forms.TextBox tbPhone;
 		private System.Windows.Forms.Label labelID;
+		public System.Windows.Forms.Button buttonOK;
 	}
 }
