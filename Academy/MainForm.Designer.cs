@@ -45,6 +45,7 @@
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
+			this.buttonAddTeacher = new System.Windows.Forms.Button();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -62,7 +63,7 @@
 			// statusStrip
 			// 
 			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.toolStripStatusLabel});
+            this.toolStripStatusLabel});
 			this.statusStrip.Location = new System.Drawing.Point(0, 385);
 			this.statusStrip.Name = "statusStrip";
 			this.statusStrip.Size = new System.Drawing.Size(770, 22);
@@ -137,9 +138,9 @@
 			// 
 			this.dgvStudents.AllowUserToAddRows = false;
 			this.dgvStudents.AllowUserToDeleteRows = false;
-			this.dgvStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvStudents.Location = new System.Drawing.Point(6, 30);
@@ -175,9 +176,9 @@
 			// 
 			// dgvGroups
 			// 
-			this.dgvGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvGroups.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.dgvGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvGroups.Location = new System.Drawing.Point(4, 33);
@@ -198,9 +199,9 @@
 			// 
 			// dgvDirections
 			// 
-			this.dgvDirections.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvDirections.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvDirections.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.dgvDirections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvDirections.Location = new System.Drawing.Point(6, 30);
@@ -221,9 +222,9 @@
 			// 
 			// dgvDisciplines
 			// 
-			this.dgvDisciplines.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvDisciplines.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvDisciplines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.dgvDisciplines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvDisciplines.Location = new System.Drawing.Point(6, 30);
@@ -233,6 +234,7 @@
 			// 
 			// tabPageTeachers
 			// 
+			this.tabPageTeachers.Controls.Add(this.buttonAddTeacher);
 			this.tabPageTeachers.Controls.Add(this.dgvTeachers);
 			this.tabPageTeachers.Location = new System.Drawing.Point(4, 22);
 			this.tabPageTeachers.Name = "tabPageTeachers";
@@ -244,15 +246,25 @@
 			// 
 			// dgvTeachers
 			// 
-			this.dgvTeachers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvTeachers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvTeachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.dgvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvTeachers.Location = new System.Drawing.Point(6, 30);
 			this.dgvTeachers.Name = "dgvTeachers";
 			this.dgvTeachers.Size = new System.Drawing.Size(750, 323);
 			this.dgvTeachers.TabIndex = 1;
+			// 
+			// buttonAddTeacher
+			// 
+			this.buttonAddTeacher.Location = new System.Drawing.Point(629, 3);
+			this.buttonAddTeacher.Name = "buttonAddTeacher";
+			this.buttonAddTeacher.Size = new System.Drawing.Size(125, 23);
+			this.buttonAddTeacher.TabIndex = 2;
+			this.buttonAddTeacher.Text = "Add Teacher";
+			this.buttonAddTeacher.UseVisualStyleBackColor = true;
+			this.buttonAddTeacher.Click += new System.EventHandler(this.buttonAddTeacher_Click);
 			// 
 			// MainForm
 			// 
@@ -300,5 +312,6 @@
 		private System.Windows.Forms.ComboBox cbStudentsDirection;
 		private System.Windows.Forms.ComboBox cbStudentsGroup;
 		private System.Windows.Forms.Button buttonAddStudent;
+		private System.Windows.Forms.Button buttonAddTeacher;
 	}
 }
