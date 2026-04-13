@@ -96,7 +96,7 @@ namespace Academy
 			cbStudentsGroups.Items.AddRange(d_groups.Keys.ToArray());
 			dgvStudents.DataSource = connector.Select
 				(
-					queries[0].ToString()+
+					queries[0].ToString() +
 					$" AND direction={d_directions[cbStudentsDirection.SelectedItem.ToString()]}"
 				);
 			toolStripStatusLabel.Text = $"{status_message[0]}: {dgvStudents.RowCount - 1}";
@@ -115,7 +115,8 @@ namespace Academy
 				(
 					Convert.ToInt32(dgvStudents.Rows[e.RowIndex].Cells["stud_id"].Value)
 				);
-			form.ShowDialog();
+			if (form.ShowDialog() == DialogResult.OK)
+				tabControl_SelectedIndexChanged(tabControl, null);
 		}
 	}
 }

@@ -33,6 +33,7 @@ namespace Academy
 		{
 			if (human != null)
 			{
+				if (human.id != 0) labelID.Text = $"ID:{human.id}";
 				TBLastName.Text = human.last_name;
 				TBFirstName.Text = human.first_name;
 				TBMiddleName.Text = human.middle_name;
@@ -46,6 +47,7 @@ namespace Academy
 		{
 			human = new Models.Human
 				(
+					labelID.Text == "" ? 0: Convert.ToInt32(labelID.Text.Split(':').Last()),
 					TBLastName.Text,
 					TBFirstName.Text,
 					TBMiddleName.Text,
@@ -54,6 +56,13 @@ namespace Academy
 					tbPhone.Text,
 					pbPhoto.Image
 				);
+		}
+
+		private void buttonBrowse_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog dialog = new OpenFileDialog();
+			dialog.Filter = 
+				"JPG files (*.jpg)|*.jpg| PNG files (*.png)|*.png|All Image files|*.png;*.jpg|All files (*.*)|*.*";
 		}
 	}
 }

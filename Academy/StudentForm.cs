@@ -22,7 +22,7 @@ namespace Academy
 			cbGroups.DisplayMember = "group_name";
 			cbGroups.ValueMember = "group_id";
 		}
-		public StudentForm(int id):this()
+		public StudentForm(int id) : this()
 		{
 			DataTable data = DataBase.Connector.Select("*", "Students", $"stud_id={id}");
 			//object[] arr = data.Rows[0].ItemArray;
@@ -30,13 +30,18 @@ namespace Academy
 			human = student;
 			Extract();
 			cbGroups.SelectedValue = student.group;
+			pbPhoto.Image = DataBase.Connector.DownloadPhoto("Students", "photo", student.id);
 		}
 		protected override void buttonOk_Click(object sender, EventArgs e)
-		{ 
+		{
 			base.buttonOk_Click(sender, e);
 
 			student = new Models.Student(human, Convert.ToInt32(cbGroups.SelectedValue));
-			DataBase.Connector.Insert("Students", $"{student.GetNames()}", $"{student.GetValues()}");
+			//object id = DataBase.Connector.Scalar($"SELECT stud_id FROM Students WHERE {student.GetCondition()}");
+			if (student.id == 0) DataBase.Connector.Insert("Students", $"{student.GetNames()}", $"{student.GetValues()}");
+			else DataBase.Connector.Update($"UPDATE Students SET {student.GetUpdateString()} WHERE stud_id={student.id}");
+			if(student.photo != null)
+				DataBase.Connector.UploadPhoto(student.SerializePhoto(), student.id, "photo", "Students");
 			//DataBase.Connector.Insert
 			//	(
 			//		"Students",
