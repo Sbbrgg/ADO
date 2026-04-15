@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -28,10 +30,10 @@ namespace Academy.Models
 			this.work_since = work_since;
 			this.rate = rate;
 		}
-		public Teacher(object[] values):base(values)
+		public Teacher(DataRow row):base(row.ItemArray)
 		{
-			this.work_since = values[8].ToString();
-			this.rate = Convert.ToDecimal(values[9]);
+			this.work_since = row["work_since"].ToString();
+			this.rate = Convert.ToDecimal(row["rate"]);
 		}
 		public override string GetNames()
 		{
@@ -39,11 +41,11 @@ namespace Academy.Models
 		}
 		public override string GetValues()
 		{
-			return base.GetValues() + $"N'{work_since}',{rate}";
+			return base.GetValues() + $",N'{work_since}',{rate.ToString(CultureInfo.InvariantCulture)}";
 		}
 		public override string GetCondition()
 		{
-			return base.GetCondition() + $" AND work_since=N'{work_since}' AND rate={rate}";
+			return base.GetCondition() + $" AND work_since=N'{work_since}' AND rate={rate.ToString(CultureInfo.InvariantCulture)}";
 		}
 		
 	}

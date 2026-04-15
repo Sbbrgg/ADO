@@ -17,6 +17,15 @@ namespace Academy
 		{
 			InitializeComponent();
 		}
+		public TeacherForm(int id): this()
+		{
+			DataTable data = DataBase.Connector.Select("*", "Teachers", $"teacher_id={id}");
+			teacher = new Models.Teacher(data.Rows[0]);
+			human = teacher;
+			Extract();
+			pbPhoto.Image = DataBase.Connector.DownloadPhoto("Teachers", "photo", teacher.id);
+			tbRate.Text = teacher.rate.ToString();
+		}
 
 		private void buttonOK_Click_1(object sender, EventArgs e)
 		{
