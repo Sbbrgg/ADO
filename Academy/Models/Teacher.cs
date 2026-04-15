@@ -33,7 +33,7 @@ namespace Academy.Models
 		public Teacher(DataRow row):base(row.ItemArray)
 		{
 			this.work_since = row["work_since"].ToString();
-			this.rate = Convert.ToDecimal(row["rate"]);
+			this.rate = Convert.ToDecimal(row["rate"].ToString().Split(',').First());
 		}
 		public override string GetNames()
 		{
