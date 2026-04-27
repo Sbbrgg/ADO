@@ -12,7 +12,22 @@
 			<RowDefinition Height="25"/>
 		</Grid.RowDefinitions>
 		<TabControl Name="tabCotrol" Grid.Row="0" SelectionChanged="tabCotrol_SelectionChanged">
-			<TabItem Name="tabStudents"		Header="Students">		<DataGrid Name="dgvStudents"/>		</TabItem>
+			<TabItem Name="tabStudents"		Header="Students">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="30"/>
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<StackPanel Grid.Row="0" Height="30" Orientation="Horizontal">
+						<TextBlock Text="Направления:  " VerticalAlignment="Center"/>
+						<ComboBox Name="cbDirections_dgvStudents" MinWidth="100" Width="auto" SelectionChanged="cbDirections_dgvStudents_SelectionChanged"/>
+						<TextBlock Text="Группа:  " VerticalAlignment="Center"/>
+						<ComboBox x:Name="cbGroups_dgvStudents" MinWidth="50" Width="auto" SelectionChanged="cbGroups_dgvStudents_SelectionChanged"/>
+						<Button Name="btnClearFilters_dgvStudents" Content="Сбросить фильтры" Margin="10,0" Click="btnClearFilters_dgvStudents_Click"/>
+					</StackPanel>
+					<DataGrid Name="dgvStudents" Grid.Row="1"/>
+				</Grid>
+			</TabItem>
 			<TabItem Name="tabGroups"		Header="Groups">		<DataGrid Name="dgvGroups"/>		</TabItem>
 			<TabItem Name="tabDirections"	Header="Directions">	<DataGrid Name="dgvDirections"/>	</TabItem>
 			<TabItem Name="tabDisciplines"	Header="Disciplines">	<DataGrid Name="dgvDisciplines"/>	</TabItem>
